@@ -32,46 +32,46 @@
     </form>
 
     <script>
-        (function(){
+        (function () {
             var formulario = document.getElementById('formulario'),
-            elementos = formulario.elements,
-            boton = document.getElementById('agregar');
+                elementos = formulario.elements,
+                boton = document.getElementById('agregar');
 
-            var validarDni = function(e){
-                if(formulario.dni.value <=1000000){
+            var validarDni = function (e) {
+                if (formulario.dni.value <= 1000000) {
                     alert("DNI no valido");
                     e.preventDefault();
                 }
             };
 
-            var validarNombre = function(e){
-                if(formulario.Nombre.value == 0){
+            var validarNombre = function (e) {
+                if (formulario.Nombre.value == 0) {
                     alert("Ingrese Nombre valido");
                     e.preventDefault();
                 }
             };
 
-            var validarApellido = function(e){
-                if(formulario.Apellido.value == 0){
+            var validarApellido = function (e) {
+                if (formulario.Apellido.value == 0) {
                     alert("Ingrese Apellido valido");
                     e.preventDefault();
                 }
             };
 
-            var validarEmail = function(e){
-                if(formulario.Email.value == 0){
+            var validarEmail = function (e) {
+                if (formulario.Email.value == 0) {
                     alert("Ingrese Email valido");
                     e.preventDefault();
                 }
             };
 
 
-            var validar = function(e){
+            var validar = function (e) {
                 validarDni(e);
                 validarNombre(e);
                 validarApellido(e);
                 validarEmail(e);
-                }
+            }
 
 
             formulario.addEventListener("submit", validar);

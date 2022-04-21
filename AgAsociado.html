@@ -73,7 +73,12 @@
         function insertInLocalStorage(asocObj) {
             let objjson= JSON.stringify(asocObj);
             let ref = asocObj.dni;
-            localStorage.setItem(ref, objjson)      
+            if (localStorage.getItem(ref) == null)
+            {
+                localStorage.setItem(ref, objjson) 
+            } else {
+                alert("El DNI ya se encuentra registrado")
+            }
         }
 
         function validar(e) {

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8" />
@@ -12,47 +13,67 @@
         <h2>Agregar Asociado</h2>
         <div>
             <label for="dni">DNI: </label>
-            <input class="form-control" id="dni" type="number" name="DNI" value="" maxlength="8">
+            <input class="form-control" id="dni" type="number" name="dni" value="" maxlength="8" minlength="7" required>
         </div>
         <div>
             <label for="Nombre">Nombre: </label>
-            <input class="form-control" id="nombre" type="text" name="Nombre" value="">
+            <input class="form-control" id="nombre" type="text" name="nombre" value="" required>
         </div>
         <div>
             <label for="Apellido">Apellido: </label>
-            <input class="form-control" id="apellido" type="text" name="Apellido" value="">
+            <input class="form-control" id="apellido" type="text" name="apellido" value="" required>
 
         </div>
         <div>
             <label for="email">E-mail: </label>
-            <input class="form-control" id="email" type="email" name="Email" value="">
+            <input class="form-control" id="email" type="email" name="email" value="" required>
         </div>
         <div>
             <label for="donador">Donador</label>
-            <input type="radio" name="Donador" id="donador">
+            <input type="radio" name="donante" id="donador" value="si">
             <label for="donador">No Donador</label>
-            <input type="radio" name="noDonador" id="noDonador">
+            <input type="radio" name="donante" id="noDonador" value="no">
         </div>
         <div>
             <button id="agregar">Agregar</button>
-            <button id="cancelar" onclick="history.back ()">Cancelar</button>
+
         </div>
     </form>
+    <div>
+        <button id="cancelar" onclick="history.back ()">Cancelar</button>
+    </div>
 
     <script>
-        let form = document.getElementById('formulario'),
-            elementos = form.elements,
-            boton = document.getElementById("agregar");
+        const form = document.getElementById('formulario');
 
-        boton.addEventListener("click", function (event) {
+        form.addEventListener("submit", function (event) {
             validar(event);
             event.preventDefault();
-            //let transactionFormData = new FormData(form);
-            //insertRowInTransactionTable(transactionFormData)
+            let transFormData = new FormData(form);
+            let asocObj = crearAsociado(transFormData); 
+            insertInLocalStorage(asocObj);
         })
 
-        function insertRowInTransactionTable(transactionFormData) {
-            let transaccionTableRef = document.getElementById()
+        function crearAsociado(transFormData){
+
+            let dni = document.querySelector("#dni").value;
+            let nombre = document.querySelector("#nombre").value;
+            let apellido = document.querySelector("#apellido").value;
+            let email = document.querySelector("#email").value;
+            let donante = transFormData.get("donante")
+            return{
+                "dni" : dni,
+                "nombre" : nombre,
+                "apellido" : apellido,
+                "email": email,
+                "donante" : donante
+            }
+        }
+
+        function insertInLocalStorage(asocObj) {
+            let objjson= JSON.stringify(asocObj);
+            let ref = asocObj.dni;
+            localStorage.setItem(ref, objjson)      
         }
 
         function validar(e) {
@@ -70,27 +91,25 @@
         };
 
         var validarNombre = function (e) {
-            if (form.Nombre.value == 0) {
+            if (form.nombre.value == 0) {
                 alert("Ingrese Nombre valido");
                 e.preventDefault();
             }
         };
 
         var validarApellido = function (e) {
-            if (form.Apellido.value == 0) {
+            if (form.apellido.value == 0) {
                 alert("Ingrese Apellido valido");
                 e.preventDefault();
             }
         };
 
         var validarEmail = function (e) {
-            if (form.Email.value == 0) {
+            if (form.email.value == 0) {
                 alert("Ingrese Email valido");
                 e.preventDefault();
             }
-        };
-
-
-
+        }
     </script>
 </body>
+</html>

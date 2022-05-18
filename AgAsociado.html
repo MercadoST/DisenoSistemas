@@ -40,7 +40,7 @@
         </div>
     </form>
     <div>
-        <button id="cancelar" onclick="history.back ()">Cancelar</button>
+        <button id="cancelar" onclick="history.back ()">Volver</button>
     </div>
 
     <script>
@@ -50,32 +50,31 @@
             validar(event);
             event.preventDefault();
             let transFormData = new FormData(form);
-            let asocObj = crearAsociado(transFormData); 
+            let asocObj = crearAsociado(transFormData);
             insertInLocalStorage(asocObj);
         })
 
-        function crearAsociado(transFormData){
+        function crearAsociado(transFormData) {
 
             let dni = document.querySelector("#dni").value;
             let nombre = document.querySelector("#nombre").value;
             let apellido = document.querySelector("#apellido").value;
             let email = document.querySelector("#email").value;
             let donante = transFormData.get("donante")
-            return{
-                "dni" : dni,
-                "nombre" : nombre,
-                "apellido" : apellido,
+            return {
+                "dni": dni,
+                "nombre": nombre,
+                "apellido": apellido,
                 "email": email,
-                "donante" : donante
+                "donante": donante
             }
         }
 
         function insertInLocalStorage(asocObj) {
-            let objjson= JSON.stringify(asocObj);
+            let objjson = JSON.stringify(asocObj);
             let ref = asocObj.dni;
-            if (localStorage.getItem(ref) == null)
-            {
-                localStorage.setItem(ref, objjson) 
+            if (localStorage.getItem(ref) == null) {
+                localStorage.setItem(ref, objjson)
             } else {
                 alert("El DNI ya se encuentra registrado")
             }
@@ -117,4 +116,5 @@
         }
     </script>
 </body>
+
 </html>

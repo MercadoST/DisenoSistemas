@@ -1,17 +1,8 @@
-const express = require('express')
-const cors = require('cors')
+const app = require('./app');
 
-const app = express()
-const port = 3000
+async function main() {
+    await app.listen(app.get('port'));
+    console.log('Server port: ', app.get('port'))
+} 
 
-//#region
-app.use(
-    express.urlencoded({
-        extended: true
-    })
-)
-
-app.use(express.json({
-    type: "*/*"
-}))
-//#endregion
+main();

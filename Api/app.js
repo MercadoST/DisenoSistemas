@@ -3,7 +3,6 @@ const cors = require('cors')
 const app = express()
 const fs = require('fs')
 
-
 module.exports = app;
 
 
@@ -33,33 +32,3 @@ app.use((req, res, next) =>{
 
 //#endregion
 
-app.get('/AgAsoc', (req, res) => {
-    console.log('llego');
-    //const archivo = new XMLHttpRequest();
-    //archivo.open('GET', 'db/asociado.json', false);
-    //archivo.send();
-    
-
-    res.send('Funco');
-    // aca agregar la funcion para que lea el JSON
-})
-
-app.post('/AgAsoc', (req, res) => {
-    res.send('Funco post');
-    // aca agregar la funcion para que agregre en el JSON
-})
-
-app.get('/EdAsoc', (req, res) => {
-    res.send('Funco');
-    // aca agregar la funcion para que busque en el JSON
-})
-
-app.post('/EdAsoc', (req, res) => {
-    res.send('Funco post');
-    // aca agregar la funcion para que edite en el JSON
-})
-
-app.post('/BorrAsoc', (req, res) => {
-    res.send('Funco post');
-    // aca agregar la funcion para que elimine en el JSON (post o delete?)
-})

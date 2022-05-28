@@ -1,4 +1,4 @@
-//const { get } = require('http');
+const { get } = require('http');
 const local = "http://localhost:3000"
 
 const form = document.getElementById('formulario');

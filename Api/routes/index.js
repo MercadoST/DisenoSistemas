@@ -15,23 +15,9 @@ router.get('/AgAsociado', (req, res) =>{
 })
 
 router.get('/Asociados', (req, res) =>{
-    res.render('EdAsociado.ejs', {
+    res.render('Asociados.ejs', {
         personas
     })
-})
-router.get('/DelAsociado', (req, res) =>{
-    res.render('DelAsociado.ejs')
-})
-
-router.get('/AgAsoc', (req, res) => {
-    console.log('llego');
-    //const archivo = new XMLHttpRequest();
-    //archivo.open('GET', 'db/asociado.json', false);
-    //archivo.send();
-    
-
-    res.send('Funco');
-    // aca agregar la funcion para que lea el JSON
 })
 
 router.post('/AgAsoc', (req, res) => {

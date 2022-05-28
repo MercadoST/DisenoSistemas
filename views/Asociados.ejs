@@ -37,6 +37,9 @@
                         <td><p><%= asoc.donante %></p></td>
                         <td><p><%= asoc.grsan %></p></td>
                         <td><p><%= asoc.enfermedad %></p></td>
+                        <td><a href="/EdAsoc/<%= asoc.dni %>" class="btn btn-success btn-block">
+                            Editar
+                          </a></td>
                         <td><a href="/BorrAsoc/<%= asoc.dni %>" class="btn btn-danger btn-block">
                             Borrar
                           </a></td>
@@ -45,9 +48,10 @@
 
             <% } else { %>
                 <div class="">
-                    <p>Sin asociados aun. <a href="/AgAsociado">Agregar</a></p>
+                    <p>Sin asociados aun.</p>
                 </div>
             <% } %>
+            <p><a href="/AgAsociado">Agregar</a></p>
 
         </tbody>
     </table>

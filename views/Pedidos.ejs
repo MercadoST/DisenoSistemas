@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Pedidos</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <table border="1">
+        <caption>Pedidos</caption>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Solicitante</th>
+                <th>Fecha Emision</th>
+                <th>Fecha Vencimiento</th>
+                <th>Tipo de Sangre</th>
+                <th>Cantidad Solicitada</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            <%if (pedidos.length > 0) { %>
+                <% pedidos.forEach(function(pedi) { %>
+                    <tr>
+                        <td><p><%= pedi.id %></p></td>
+                        <td><p><%= pedi.solicitante %></p></td>
+                        <td><p><%= pedi.femision %></p></td>
+                        <td><p><%= pedi.fvencimiento %></p></td>
+                        <td><p><%= pedi.grsan %></p></td>
+                        <td><p><%= pedi.cantidad %></p></td>
+                        <td><p><%= pedi.estado %></p></td>
+                        <td><p>
+                            <a href="/ComPed/<%= pedi.id %>" class="btn btn-success btn-block">
+                                Completar 
+                            </a> || 
+                            <a href="/EdPed/<%= pedi.id %>" class="btn btn-success btn-block">
+                            Editar 
+                            </a> || <a href="/BorrPed/<%= pedi.id %>" class="btn btn-danger btn-block">
+                            Borrar
+                            </a></p></td>
+                    </tr>
+                <% }) %>
+
+            <% } else { %>
+                <div class="">
+                    <p>Sin pedidos aun.</p>
+                </div>
+            <% } %>
+            <p><a href="/AgPedido">Agregar</a></p>
+            <p><a href="/">Inicio</a></p>
+
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Solicitantes</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <table border="1">
+        <caption>Solicitantes</caption>
+        <tbody>
+            <tr>
+                <th>Cuil/Cuit</th>
+                <th>Nombre</th>
+                <th> </th>
+            </tr>
+            <%if (solicitantes.length > 0) { %>
+                <% solicitantes.forEach(function(soli) { %>
+                    <tr>
+                        <td><p><%= soli.cuit %></p></td>
+                        <td><p><%= soli.nombre %></p></td>
+                        <td><a href="/EdSoli/<%= soli.dni %>" class="btn btn-success btn-block">
+                            Editar
+                          </a></td>
+                        <td><a href="/BorrSoli/<%= soli.dni %>" class="btn btn-danger btn-block">
+                            Borrar
+                          </a></td>
+                    </tr>
+                <% }) %>
+
+            <% } else { %>
+                <div class="">
+                    <p>Sin Solicitantes aun.</p>
+                </div>
+            <% } %>
+            <p><a href="/AgSolicitante">Agregar</a></p>
+            <p><a href="/">Inicio</a></p>
+
+        </tbody>
+    </table>
+
+</body>
+</html>

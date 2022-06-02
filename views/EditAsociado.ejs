@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta lang="en">
+    <title>Editar Asociado</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form method='POST' action="/EdAsoc" name="formulario" id="formulario">
+        <h2>Editar Asociado</h2>
+        <div>
+            <label for="dni">DNI: </label>
+            <input class="form-control" id="dni" type="number" name="dni" value="<%= edit.dni %>" maxlength="8" minlength="7" >
+        </div>
+        <div>
+            <label for="nombre">Nombre: </label>
+            <input class="form-control" id="nombre" type="text" name="nombre" value="<%= edit.nombre %>" required>
+        </div>
+        <div>
+            <label for="apellido">Apellido: </label>
+            <input class="form-control" id="apellido" type="text" name="apellido" value="<%= edit.apellido %>" required>
+
+        </div>
+        <div>
+            <label for="email">E-mail: </label>
+            <input class="form-control" id="email" type="email" name="email" value="<%= edit.email %>" required>
+        </div>
+        <div>
+            <label for="donador">Donador</label>
+            <input type="radio" name="donante" id="donador" value="si">
+            <label for="donador">No Donador</label>
+            <input type="radio" name="donante" id="noDonador" value="no">
+        </div>
+        <div>
+            <label for="grsan">Grupo Sanguineo: </label>
+            <select class="form-control" id="grsan" type="text" name="grsan" value="" required>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+        </div>
+        <div>
+            <label for="enfermedad">Enfermedades: </label>
+            <input class="form-control" id="enfermedad" type="text" name="enfermedad" value="<%= edit.enfermedad %>" required>
+        </div>
+        <div>
+            <button type="submit">Agregar</button>
+
+        </div>
+    </form>
+    <div>
+        <button id="cancelar" onclick="history.back ()">Volver</button>
+    </div>
+</body>
+
+</html>

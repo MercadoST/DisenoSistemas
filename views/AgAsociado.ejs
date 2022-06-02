@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta lang="en">
     <title>Agregar Asociado</title>
+    <link rel="stylesheet" href="/views/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <form method='POST' action="/AgAsoc" name="formulario" id="formulario" method="get">
+    <form method='POST' action="/AgAsoc" name="formulario" id="formulario">
         <h2>Agregar Asociado</h2>
         <div>
             <label for="dni">DNI: </label>
@@ -37,7 +38,16 @@
         </div>
         <div>
             <label for="grsan">Grupo Sanguineo: </label>
-            <input class="form-control" id="grsan" type="text" name="grsan" value="" required>
+            <select class="form-control" id="grsan" type="text" name="grsan" value="" required>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
         </div>
         <div>
             <label for="enfermedad">Enfermedades: </label>

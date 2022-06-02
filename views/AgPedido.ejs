@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta lang="en">
+    <title>Agregar Pedido</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <p><a href="/AgSolicitante">Agregar Solicitante</a></p>
+
+    <form method='POST' action="/AgPed" name="formulario" id="formulario">
+        <h2>Agregar Pedido</h2>
+        <div>
+            <label for="solicitante">Solicitante: </label>
+            <select name="solicitante" id="solicitante">
+                <%if (solicitantes.length> 0) { %>
+                    <% solicitantes.forEach(function(pedi) { %>
+                        <option value=" <%= pedi.nombre %> ">
+                            <%= pedi.nombre %>
+                        </option>
+                    <% }) %>
+
+                <% } else { %>
+                    <option value="">(vacio)</option>
+                <% } %>
+            </select>
+        </div>
+        <div>
+            <label for="grsan">Tipo de sangre: </label>
+            <select class="form-control" id="grsan" type="text" name="grsan" value="" required>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+        </div>
+        <div>
+            <label for="cantidad">Cantidad (ml): </label>
+            <input class="form-control" id="cantidad" type="number" name="cantidad" value="" required>
+        </div>
+        <div>
+            <label for="fvencimiento">Fecha de Vencimiento: </label>
+            <input class="form-control" id="fvencimiento" type="date" name="fvencimiento" value="" required>
+        </div>
+
+        <div>
+            <button id="editar">Agregar</button>
+
+        </div>
+    </form>
+    <div>
+        <button id="cancelar" onclick="history.back ()">Volver</button>
+    </div>
+</body>
+
+</html>

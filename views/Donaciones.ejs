@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Donaciones</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <table border="1">
+        <caption>Donaciones</caption>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Asociado</th>
+                <th>Pedido</th>
+                <th>Cantidad</th>
+                <th>Fecha de donacion</th>
+                <th>Acciones</th>
+            </tr>
+            <%if (donaciones.length > 0) { %>
+                <% donaciones.forEach(function(dona) { %>
+                    <tr>
+                        <td><p><%= dona.id %></p></td>
+                        <td><p><%= dona.asociado %></p></td>
+                        <td><p><%= dona.pedido %></p></td>
+                        <td><p><%= dona.cantidad %></p></td>
+                        <td><p><%= dona.fdonacion %></p></td>
+                        <td><p>
+                            <a href="/EdDon/<%= dona.id %>" class="btn btn-success btn-block">
+                            Editar 
+                            </a> || <a href="/BorrDon/<%= dona.id %>" class="btn btn-danger btn-block">
+                            Borrar
+                            </a></p></td>
+                    </tr>
+                <% }) %>
+
+            <% } else { %>
+                <div class="">
+                    <p>Sin donaciones aun.</p>
+                </div>
+            <% } %>
+            <p><a href="/AgDonacion">Agregar</a></p>
+            <p><a href="/">Inicio</a></p>
+
+        </tbody>
+    </table>
+
+</body>
+</html>

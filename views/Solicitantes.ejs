@@ -14,6 +14,8 @@
 </head>
 
 <body>
+    <p><a href="/AgSolicitante">Agregar</a></p>
+    <p><a href="/">Inicio</a></p>
     <table border="1">
         <caption>Solicitantes</caption>
         <tbody>
@@ -27,10 +29,10 @@
                     <tr>
                         <td><p><%= soli.cuit %></p></td>
                         <td><p><%= soli.nombre %></p></td>
-                        <td><a href="/EdSoli/<%= soli.dni %>" class="btn btn-success btn-block">
+                        <td><a href="/EdSoli/<%= soli.cuit %>" class="btn btn-success btn-block">
                             Editar
                           </a></td>
-                        <td><a href="/BorrSoli/<%= soli.dni %>" class="btn btn-danger btn-block">
+                        <td><a href="/BorrSoli/<%= soli.cuit %>" class="btn btn-danger btn-block">
                             Borrar
                           </a></td>
                     </tr>
@@ -41,11 +43,7 @@
                     <p>Sin Solicitantes aun.</p>
                 </div>
             <% } %>
-            <p><a href="/AgSolicitante">Agregar</a></p>
-            <p><a href="/">Inicio</a></p>
-
         </tbody>
     </table>
-
 </body>
 </html>

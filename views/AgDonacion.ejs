@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta lang="en">
+    <title>Agregar Donacion</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <p><a href="/AgDonacion">Agregar Donacion</a></p>
+
+    <form method='POST' action="/AgDon" name="formulario" id="formulario">
+        <h2>Agregar Donacion</h2>
+        <div>
+            <label for="asociado">Asociado: </label>
+            <select name="asociado" id="asociado">
+                <%if (personas.length> 0) { %>
+                    <% personas.forEach(function(pers) { %>
+                        <option value=" <%= pers.nombre %> ">
+                            <%= pers.nombre %>
+                        </option>
+                    <% }) %>
+
+                <% } else { %>
+                    <option value="">(vacio)</option>
+                <% } %>
+            </select>
+        </div>
+        <div>
+            <label for="pedido">Asociado: </label>
+            <select name="pedido" id="pedido">
+                <%if (pedidos.length> 0) { %>
+                    <% pedidos.forEach(function(pedi) { %>
+                        <option value=" <%= pedi.solicitante %> ">
+                            <%= pedi.solicitante %>
+                        </option>
+                    <% }) %>
+
+                <% } else { %>
+                    <option value="">(vacio)</option>
+                <% } %>
+            </select>
+        </div>
+        <div>
+            <label for="cantidad">Cantidad (ml): </label>
+            <input class="form-control" id="cantidad" type="number" name="cantidad" value="" required>
+        </div>
+        <div>
+            <label for="fdonacion">Fecha de Donacion: </label>
+            <input class="form-control" id="fdonacion" type="date" name="fdonacion" value="" required>
+        </div>
+
+        <div>
+            <button id="agregar">Agregar</button>
+
+        </div>
+    </form>
+    <div>
+        <button id="cancelar" onclick="history.back ()">Volver</button>
+    </div>
+</body>
+
+</html>

@@ -14,7 +14,7 @@
         <h2>Editar Asociado</h2>
         <div>
             <label for="dni">DNI: </label>
-            <input class="form-control" id="dni" type="number" name="dni" value="<%= edit.dni %>" maxlength="8" minlength="7" >
+            <input class="form-control" id="dni" type="number" name="dni" value="<%= edit.dni %>" readonly >
         </div>
         <div>
             <label for="nombre">Nombre: </label>
@@ -31,7 +31,7 @@
         </div>
         <div>
             <label for="donador">Donador</label>
-            <input type="radio" name="donante" id="donador" value="si">
+            <input type="radio" name="donante" id="donador" value="si" required>
             <label for="donador">No Donador</label>
             <input type="radio" name="donante" id="noDonador" value="no">
         </div>
@@ -53,7 +53,7 @@
             <input class="form-control" id="enfermedad" type="text" name="enfermedad" value="<%= edit.enfermedad %>" required>
         </div>
         <div>
-            <button type="submit">Agregar</button>
+            <button type="submit">Editar</button>
 
         </div>
     </form>

@@ -203,6 +203,76 @@ router.get('/BorrPed/:id', (req, res) => {
  //#endregion
 
 // donaciones
+//#region
+router.get('/AgDonacion', (req, res) =>{
+    res.render('AgDonacion.ejs', {
+        personas,
+        pedidos
+    })
+})
+
+router.get('/Donaciones', (req, res) =>{
+    res.render('Donaciones.ejs', {
+        donaciones
+    })
+})
+
+router.post('/AgDon', (req, res) => {
+    const {asociado, pedido, cantidad, fdonacion } = req.body;
+    let dona =
+    {
+        id: uuidv4(),
+        asociado,
+        pedido,
+        cantidad,
+        fdonacion
+    }
+
+    donaciones.push(dona);
+    var ingdona = JSON.stringify(donaciones);
+    fs.writeFileSync('Api/db/donaciones.json', ingdona, 'utf-8' );
+    console.log('hecho');
+    res.redirect('/Donaciones');
+    // aca agregar la funcion para que agregre en el JSON
+})
+
+
+router.get('/EdDon/:id', (req, res) => {
+    var edit = donaciones.find(dona => dona.id == req.params.id)
+    res.render('EditDonacion.ejs', {
+        edit,
+        personas,
+        pedidos
+    })
+    // aca agregar la funcion para que busque en el JSON
+})
+
+router.post('/EdDon', (req, res) => {
+    var edit = donaciones.find(dona => dona.id == req.body.id)
+    donaciones = donaciones.filter(dona => dona.id != req.body.id)
+    edit.asociado= req.body.asociado;
+    edit.pedido= req.body.pedido;
+    edit.fdonacion = req.body.fdonacion;
+    edit.cantidad = req.body.cantidad;
+    donaciones.push(edit);
+    var ingdona = JSON.stringify(donaciones);
+    fs.writeFileSync('Api/db/donaciones.json', ingdona, 'utf-8' );
+    console.log('hecho');
+
+    res.redirect('/Donaciones');
+    // aca agregar la funcion para que edite en el JSON
+})
+
+router.get('/BorrDon/:id', (req, res) => {
+    donaciones = donaciones.filter(dona => dona.id != req.params.id)
+    let ingdona = JSON.stringify(donaciones);
+    fs.writeFileSync('Api/db/donaciones.json', ingdona, 'utf-8' );
+    res.redirect('/Donaciones');
+    // aca agregar la funcion para que elimine en el JSON 
+})
+ //#endregion
+
+
 
  
 module.exports = router;

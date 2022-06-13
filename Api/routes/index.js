@@ -30,7 +30,23 @@ router.get('/Asociados', (req, res) =>{
 })
 
 router.post('/AgAsoc', (req, res) => {
-    var asoc = req.body;
+    const {dni, nombre, apellido, email, fnacimiento, grsan, enfermedad} = req.body;
+    if (calcularEdad(fnacimiento)>=18 && enfermedad=="No"){
+        var donante = "Activo";
+    } else{
+        var donante = "Pasivo";
+    }
+    let asoc ={
+        dni,
+        nombre,
+        apellido,
+        email,
+        fnacimiento,
+        donante,
+        grsan,
+        enfermedad
+    }
+    
     personas.push(asoc);
     var ingasoc = JSON.stringify(personas);
     fs.writeFileSync('Api/db/asociado.json', ingasoc, 'utf-8' );
@@ -49,7 +65,22 @@ router.get('/EdAsoc/:dni', (req, res) => {
 
 router.post('/EdAsoc', (req, res) => {
     personas = personas.filter(asoc => asoc.dni != req.body.dni)
-    var asoc = req.body;
+    const {dni, nombre, apellido, email, fnacimiento, grsan, enfermedad} = req.body;
+    if (calcularEdad(fnacimiento)>=18 && enfermedad=="No"){
+        var donante = "Activo";
+    } else{
+        var donante = "Pasivo";
+    }
+    let asoc ={
+        dni,
+        nombre,
+        apellido,
+        email,
+        fnacimiento,
+        donante,
+        grsan,
+        enfermedad
+    }
     personas.push(asoc);
     var ingasoc = JSON.stringify(personas);
     fs.writeFileSync('Api/db/asociado.json', ingasoc, 'utf-8' );
@@ -272,7 +303,18 @@ router.get('/BorrDon/:id', (req, res) => {
 })
  //#endregion
 
+ function calcularEdad(fecha) {
+    var hoy = new Date();
+    var cumpleanos = new Date(fecha);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
 
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
 
  
 module.exports = router;

@@ -31,10 +31,8 @@
             <input class="form-control" id="email" type="email" name="email" value="" required>
         </div>
         <div>
-            <label for="donador">Donador</label>
-            <input type="radio" name="donante" id="donador" value="si" required>
-            <label for="donador">No Donador</label>
-            <input type="radio" name="donante" id="noDonador" value="no">
+            <label for="fnacimiento">Fecha de Nacimiento: </label>
+            <input class="form-control" id="fnacimiento" type="date" name="fnacimiento" value="" required>
         </div>
         <div>
             <label for="grsan">Grupo Sanguineo: </label>
@@ -50,8 +48,11 @@
             </select>
         </div>
         <div>
-            <label for="enfermedad">Enfermedades: </label>
-            <input class="form-control" id="enfermedad" type="text" name="enfermedad" value="" required>
+            <label for="enfermedad">Enfermedades Cronicas: </label>
+            <select class="form-control" id="enfermedad" type="text" name="enfermedad" value="<%= edit.enfermedad %>" required>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select>
         </div>
         <div>
             <button id="agregar">Agregar</button>

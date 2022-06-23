@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta lang="en">
+    <title>Agregar Asociado</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form action="" name="formulario" id="formulario" method="get">
+        <h2>Agregar Asociado</h2>
+        <div>
+            <label for="dni">DNI: </label>
+            <input class="form-control" id="dni" type="number" name="dni" value="" maxlength="8" minlength="7">
+        </div>
+        <div>
+            <label for="Nombre">Nombre: </label>
+            <input class="form-control" id="nombre" type="text" name="nombre" value="">
+        </div>
+        <div>
+            <label for="Apellido">Apellido: </label>
+            <input class="form-control" id="apellido" type="text" name="apellido" value="">
+        </div>
+        <div>
+            <label for="email">E-mail: </label>
+            <input class="form-control" id="email" type="email" name="email" value="">
+        </div>
+        <div>
+            <label for="donador">Donador</label>
+            <input type="radio" name="donante" id="donador" value="si">
+            <label for="donador">No Donador</label>
+            <input type="radio" name="donante" id="noDonador" value="no">
+        </div>
+        <div>
+            <button id="agregar">Agregar</button>
+        </div>
+    </form>
+    <div>
+        <button id="cancelar" onclick="history.back ()">Cancelar</button>
+    </div>
+    <script>
+        const form = document.getElementById('formulario');
+
+        form.addEventListener("submit", function (event) {
+            validar(event);
+            event.preventDefault();
+            let transFormData = new FormData(form);
+            let asocObj = crearAsociado(transFormData);
+
+
+            let objjson = JSON.stringify(asocObj);
+            let ref = asocObj.dni;
+            if (localStorage.getItem(ref) == null) {
+                localStorage.setItem(ref, objjson)
+            } else {
+                alert("El DNI ya se encuentra registrado")
+            }
+        })
+        function crearAsociado(transFormData) {
+            let dni = document.querySelector("#dni").value;
+            let nombre = document.querySelector("#nombre").value;
+            let apellido = document.querySelector("#apellido").value;
+            let email = document.querySelector("#email").value;
+            let donante = transFormData.get("donante")
+            return {
+                "dni": dni,
+                "nombre": nombre,
+                "apellido": apellido,
+                "email": email,
+                "donante": donante
+            }
+        }
+
+        function validar(e) {
+            if (form.dni.value <= 1000000) {
+                alert("DNI no valido");
+                e.preventDefault();
+            }
+            if (form.nombre.value == 0) {
+                alert("Ingrese Nombre valido");
+                e.preventDefault();
+            }
+            if (form.apellido.value == 0) {
+                alert("Ingrese Apellido valido");
+                e.preventDefault();
+            }
+            if (form.email.value == 0) {
+                alert("Ingrese Email valido");
+                e.preventDefault();
+            }
+        }
+    </script>
+</body>
+
+</html>
